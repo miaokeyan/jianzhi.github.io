@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/css.css">
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style1.css">
+
+    <script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script src="js/jquery.mobile.custom.min.js"></script>
+    <script src="js/main.js"></script>
+
+    	<style>
+    /*关闭弹窗*/
+        .popBox {
+            display: none;
+        }
+ 
+        /*打开弹窗*/
+        .popBox:target {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+ 
+        /*设置弹窗内容*/
+        .popBox .con {
+            background-color: rgba(255, 255, 255, 1);
+            border-radius: 5px;
+            padding: 1.5rem;
+            position: relative;
+            width: 45rem;
+            z-index:101;
+            line-height: 1.7;
+
+        }
+ 
+        /*关闭按钮*/
+        .popBox .close {
+            display: block;
+            position: relative;
+        }
+ 
+        .popBox .close::after {
+            align-items: center;
+            color: white;
+            content: "×";
+            cursor: pointer;
+            background-color: rgba(79, 79, 79, 0.8);
+            border-radius: 50%;
+            display: flex;
+            font-size: 1.25rem;
+            justify-content: center;
+            position: absolute;
+            right: -2.5rem;
+            top: -2.5rem;
+            height: 2rem;
+            width: 2rem;
+            z-index: 2;
+        }
+ 
+        /*弹窗遮罩层*/
+        .popBox::before {
+            content: "";
+            cursor: default;
+            background-color: rgba(94, 94, 94, 0.66);
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index:101;
+        }
+		</style>
+
+</head>
+
+<body>
+
+    <div class="nav">
+        <ul>
+            <li  class="act"><a href="1intro.html">溯源</a></li>
+            <li><a href="2map.html">地图</a></li>
+            <li><a href="3class.html">分类</a></li>
+            <li><a href="4materials.html">用材</a></li>
+            <li><a href="5game.html">游戏</a></li>
+        </ul>
+    </div>
+
+    <div class="instruction">
+        <a href="#aaa"><img src="./img/介绍按钮.png" style="width: 100px;"/></a>
+    </div>
+     
+    <article class="popBox" id="aaa">
+        <div class="con">
+            <a href="#" class="close"></a>
+            <p>&nbsp&nbsp中国剪纸是一种用剪刀或刻刀在纸上剪刻花纹，用于装点生活或配合其他民俗活动的民间艺术。在中国，剪纸具有广泛的群众基础，交融于各族人民的社会生活，是各种民俗活动的重要组成部分。剪纸艺术自诞生以来，在中国历史上就没有中断过，其传承赓续的视觉形象和造型格式，蕴涵了丰富的文化历史信息，表达了广大民众的社会认知、道德观念、实践经验、生活理想和审美情趣，具有认知、教化、表意、抒情、娱乐、交往等多重社会价值。</p>
+        </div>
+    </article>
+
+    </script>
+
+    <div class="right">
+
+        <section class="cd-horizontal-timeline">
+            <div class="timeline">
+            <div class="events-wrapper">
+                <div class="events">
+                    <ol>
+                        <li><a href="#0" data-date="16/01/2000" class="selected">远古时代</a></li>
+                        <li><a href="#0" data-date="28/02/2000">夏 - 西楚</a></li>
+                        <li><a href="#0" data-date="20/04/2000">汉</a></li>
+                        <li><a href="#0" data-date="20/05/2000">三国 - 南北朝</a></li>
+                        <li><a href="#0" data-date="09/07/2000">隋唐</a></li>
+                        <li><a href="#0" data-date="30/08/2000">宋</a></li>
+                        <li><a href="#0" data-date="15/09/2000">明清</a></li>
+                        <li><a href="#0" data-date="01/11/2000">民国</a></li>
+                        <li><a href="#0" data-date="10/12/2000">当代</a></li>
+                        
+                        
+                    </ol>
+            
+                    <span class="filling-line" aria-hidden="true"></span>
+                        </div>
+                    </div> 
+                        
+                    <ul class="cd-timeline-navigation">
+                        <li><a href="#0" class="prev inactive">Prev</a></li>
+                        <li><a href="#0" class="next">Next</a></li>
+                    </ul>
+                </div> 
+            
+                <div class="events-content">
+                    <ol>
+                        <li class="selected" data-date="16/01/2000">
+                            <h2>远古时代</h2>
+                            <em>&nbsp&nbsp前170万年-前2070年</em>
+                            <p>	
+                                在原始社会时期，人们最基本的民俗形式可以认为是祭祀行为。每个原始部族都有其特有的祖先和保护神，也就有了其独特的图腾样式。在原始先民的观念形式中，图腾寄托了他们的祖先崇拜、自然崇拜和生殖崇拜，这些观念形式是剪纸萌芽的文化基础。
+                            </p>
+                        </li>
+            
+                        <li data-date="28/02/2000">
+                            <h2>夏—西楚</h2>
+                            <em>&nbsp&nbsp前2070年-前202年</em>
+                            <p>	
+                                在“纸”被发明以前，人们就有对其他薄片材料进行裁剪和切割的类似形式，包括缣帛、 毛毡、金箔、银箔、铜箔，还有自然界中的树叶、树皮、兽皮、鱼皮等薄片材料等，用以制成工艺品。可以说它们是中国初期的民间剪纸，开创了纸质剪纸的先河。即使在纸质剪纸出现之后，它也依然存在并发展着。
+                            </p>
+                        </li>
+            
+                        <li data-date="20/04/2000">
+                            <h2>汉</h2>
+                            <em>&nbsp&nbsp前202年-220年</em>
+                            <p>	
+                                造纸术发明于西汉时期，改进于东汉时期，但这时的纸价格较昂贵且材质并不十分适用于剪纸，因此纸尚未在剪纸技术中得到应用。
+                            </p>
+                        </li>
+            
+                        <li data-date="20/05/2000">
+                            <h2>三国—南北朝</h2>
+                            <em>&nbsp&nbsp220年-589年</em>
+                            <p>	
+                                在考古发现中出土了魏晋南北朝时期祭祀、丧葬给死者亡灵的冥物，这些冥物常用死者生前的使用文书裁剪而成。或许这些冥物尚不能称之为剪纸作品，但我们能够从中推测出到魏晋南北朝时期，"纸"已经普及，此时人们已经使用它来替其他薄片材料剪镂物象。此时“剪纸”才真正意义上成为一种民间艺术形式。
+                            </p>
+                        </li>
+            
+                        <li data-date="09/07/2000">
+                            <h2>隋唐</h2>
+                            <em>&nbsp&nbsp581年-979年</em>
+                            <p>	
+                                隋唐时期，结束了分裂战乱，百姓的生活安定，手工业发展，各种纸制品都已普及于民间日常生活中。<br/>从唐代开始，剪纸技术进入了大发展时期：《彭衙行》诗中有“暖汤濯我足，翦纸招我魂”的句子，表明以剪纸招魂的风俗当时就已流传民间；敦煌莫高窟曾出土过《双鹿塔》一类用来敬供佛像的剪纸；此外，还有《菩萨立像》等水墨画镂空剪纸，均可看出当时剪纸手工艺术水平已极高，画面构图完整，表达一种天上人间的理想境界。
+                            </p>
+                        </li>
+            
+                        <li data-date="30/08/2000">
+                            <h2>宋</h2>
+                            <em>&nbsp&nbsp960年-1279年</em>
+                            <p>	
+                                南宋时期，已经出现了以剪纸为职业的行业艺人。宋代造纸业成熟，纸品名目繁多，为剪纸的普及提供了条件，因此民间剪纸的运用范围逐渐扩大，如成为民间礼品的“礼花”，贴于窗上的“窗花”，或用于灯彩、茶盏的装饰。
+                            </p>
+                        </li>
+            
+                        <li data-date="15/09/2000">
+                            <h2>明清</h2>
+                            <em>&nbsp&nbsp1368年-1912年</em>
+                            <p>	
+                                明、清时期剪纸手工艺术走向成熟，并达到鼎盛时期。民间剪纸手工艺术的运用范围更为广泛，民间灯彩上的花饰，扇面上的纹饰，以及刺绣的花样等等，无一不是利用剪纸作为装饰再加工的。剪纸艺术虽然来自于民间，但到清代已经成为全民性的艺术，就连当时的皇亲国戚也都离不开剪纸：北京故宫的坤宁宫前后窗的窗纸都是裱糊在外面的，四角贴有“囍”字剪纸角花，顶棚中心则是黑色的龙凤团花剪纸。
+                            </p>
+                        </li>
+            
+                        <li data-date="01/11/2000">
+                            <h2>民国</h2>
+                            <em>&nbsp&nbsp1912年-1949年</em>
+                            <p>	
+                                20世纪初“五四”新文化运动，在先进知识分子的倡导下，建立了中国民俗学的雏形。他们广泛收集民间文学资料，同时也努力收集民间美术作品，其中就有民间剪纸这一项。20世纪40年代，以现实生活为题材的剪纸开始出现。延安鲁艺的艺术家开始学习当地具有深厚群众基础的民间剪纸，并创作出了一大批反映边区人民生产、生活、战斗的新剪纸。作品运用了民间传统的样式，描写了抗日战争和边区建设的新内容。它推动了群众性剪纸的创作和发展，使传统的民间剪纸发生了革命性的变化。可以说，延安的剪纸开创了中国剪纸的新纪元。
+                            </p>
+                        </li>
+            
+                        <li data-date="10/12/2000">
+                            <h2>当代</h2>
+                            <em>&nbsp&nbsp1949年以后</em>
+                            <p>	
+                                新中国成立后，在“百花齐放，推陈出新”文艺方针的指导下，艺术家们创作了大量表现社会主义新人新事的新剪纸，开拓了剪纸创作的道路，也丰富了中国民间装饰美术的形式和内容。在新剪纸的创作中除了表现各行各业新气象的剪纸外，儿童、体育、杂技、歌舞等也成为剪纸最常见的题材。
+                            </p>
+                        </li>
+            
+                
+                       
+                    </ol>
+                </div>
+            </section>
+       
+        
+    </div>
+<div>
+    <a href="../index.html"><img src="./img/返回首页.png" alt="" style="width:130px;position: absolute;
+        right:40px;
+        bottom:20px ;"></a>
+</div>
+
+</body>
+</html>

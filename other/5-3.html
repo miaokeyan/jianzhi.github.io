@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5-3</title>
+<style>
+        /* 设置弹性布局，用来为盒状模型提供最大的灵活性 */
+        body{
+            display: flex;  
+            background-color: #FFF7EC;
+        }
+            /* 页面滚动条设置 */
+       ::-webkit-scrollbar {
+        width: 15px;
+      }
+      ::-webkit-scrollbar-track {
+        background-color:rgb(255, 255, 255);
+        -webkit-border-radius: 2em;
+        -moz-border-radius: 2em;
+        border-radius:2em;
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color:rgb(208, 208, 208);
+        -webkit-border-radius: 2em;
+        -moz-border-radius: 2em;
+        border-radius:2em;
+      }
+        .book{
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            top: 250px;
+            left: 300px;
+            transform-style: preserve-3d;
+            perspective: 600px;
+            transition: 2s;
+            
+        }
+      
+        .book_nav_1,.book_nav_2,.book_nav_3,.book_nav_4,.book_nav_5{
+            /* 设置宽高 */
+            width: 150px;
+            height: 150px;
+            /* 生成绝对定位元素 */
+            position: absolute;
+            /* 这是翻页的起点，在左边 */
+            transform-origin: left;
+            /* 把背景图片放大到适合元素容器的尺寸，图片比例不变，但是要注意，超出容器的部分可能会裁掉。 */
+            background-size: cover;
+            /* 这是翻页时元素之间的延迟 */
+            transition: calc(var(--i)*1s);
+            /* 这是翻页时元素的层级 */
+            z-index: calc(var(--i)*99);
+        }
+
+        .book:hover .book_nav_1{
+            border-left: #576574 0px solid;
+        }
+        .book:hover .book_nav_2,.book:hover .book_nav_3,.book:hover .book_nav_4,.book:hover .book_nav_5{
+            /* css调转180度实现页面翻动后效果 */
+            transform: rotateY(-180deg);
+            /* 翻页延迟和层级*/
+            transition: calc(var(--s)*.6s);
+            z-index: calc(var(--s)*-99);
+        }
+        .book:hover{
+            /* 平移 */
+            transform: translateX(100px);
+        }
+        .book2{
+            width: 150px;
+            height:200px;
+            position: absolute;
+            top: 250px;
+            left: 600px;
+            transform-style: preserve-3d;
+            perspective: 600px;
+            transition: 2s;
+            
+        }
+      
+        .book2_nav_1,.book2_nav_2,.book2_nav_3,.book2_nav_4,.book2_nav_5{
+            /* 设置宽高 */
+            width: 150px;
+            height: 200px;
+            /* 生成绝对定位元素 */
+            position: absolute;
+            /* 这是翻页的起点，在左边 */
+            transform-origin: left;
+            /* 把背景图片放大到适合元素容器的尺寸，图片比例不变，但是要注意，超出容器的部分可能会裁掉。 */
+            background-size: cover;
+            /* 这是翻页时元素之间的延迟 */
+            transition: calc(var(--i)*1s);
+            /* 这是翻页时元素的层级 */
+            z-index: calc(var(--i)*99);
+        }
+
+        .book2:hover .book2_nav_1{
+            border-left: #576574 0px solid;
+        }
+        .book2:hover .book2_nav_2,.book2:hover .book2_nav_3,.book2:hover .book2_nav_4,.book2:hover .book2_nav_5{
+            /* css调转180度实现页面翻动后效果 */
+            transform: rotateY(-180deg);
+            /* 翻页延迟和层级*/
+            transition: calc(var(--s)*.6s);
+            z-index: calc(var(--s)*-99);
+        }
+        .book2:hover{
+            /* 平移 */
+            transform: translateX(100px);
+        }        
+        .book3{
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            top: 250px;
+            left: 900px;
+            transform-style: preserve-3d;
+            perspective: 600px;
+            transition: 2s;
+            
+        }
+      
+        .book3_nav_1,.book3_nav_2,.book3_nav_3,.book3_nav_4,.book3_nav_5{
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            transform-origin: left;
+            background-size: cover;
+            transition: calc(var(--i)*1s);
+            z-index: calc(var(--i)*99);
+        }
+
+        .book3:hover .book3_nav_1{
+            border-left: #576574 0px solid;
+        }
+        .book3:hover .book3_nav_2,.book3:hover .book3_nav_3,.book3:hover .book3_nav_4,.book3:hover .book3_nav_5{
+            /* css调转180度实现页面翻动后效果 */
+            transform: rotateY(-180deg);
+            /* 翻页延迟和层级*/
+            transition: calc(var(--s)*.6s);
+            z-index: calc(var(--s)*-99);
+        }
+        .book3:hover{
+            /* 平移 */
+            transform: translateX(100px);
+        }
+        .book4{
+            width: 150px;
+            height: 200px;
+            position: absolute;
+            top: 250px;
+            left: 1200px;
+            transform-style: preserve-3d;
+            perspective: 600px;
+            transition: 2s;
+            
+        }
+      
+        .book4_nav_1,.book4_nav_2,.book4_nav_3,.book4_nav_4,.book4_nav_5{
+            width: 150px;
+            height: 200px;
+            position: absolute;
+            transform-origin: left;
+            background-size: cover;
+            transition: calc(var(--i)*1s);
+            z-index: calc(var(--i)*99);
+        }
+
+        .book4:hover .book4_nav_1{
+            border-left: #576574 0px solid;
+        }
+        .book4:hover .book4_nav_2,.book4:hover .book4_nav_3,.book4:hover .book4_nav_4,.book4:hover .book4_nav_5{
+            /* css调转180度实现页面翻动后效果 */
+            transform: rotateY(-180deg);
+            /* 翻页延迟和层级*/
+            transition: calc(var(--s)*.6s);
+            z-index: calc(var(--s)*-99);
+        }
+        .book4:hover{
+            /* 平移 */
+            transform: translateX(100px);
+        }
+        .book5{
+            width: 150px;
+            height: 220px;
+            position: absolute;
+            top: 250px;
+            left: 1500px;
+            transform-style: preserve-3d;
+            perspective: 600px;
+            transition: 2s;
+            
+        }
+      
+        .book5_nav_1,.book5_nav_2,.book5_nav_3,.book5_nav_4,.book5_nav_5{
+            width: 150px;
+            height: 220px;
+            position: absolute;
+            transform-origin: left;
+            background-size: cover;
+            transition: calc(var(--i)*1s);
+            z-index: calc(var(--i)*99);
+        }
+
+        .book5:hover .book5_nav_1{
+            border-left: #576574 0px solid;
+        }
+        .book5:hover .book5_nav_2,.book5:hover .book5_nav_3,.book5:hover .book5_nav_4,.book5:hover .book5_nav_5{
+            /* css调转180度实现页面翻动后效果 */
+            transform: rotateY(-180deg);
+            /* 翻页延迟和层级*/
+            transition: calc(var(--s)*.6s);
+            z-index: calc(var(--s)*-99);
+        }
+        .book5:hover{
+            /* 平移 */
+            transform: translateX(100px);
+        }
+        .book6{
+            width: 150px;
+            height: 220px;
+            position: absolute;
+            top: 250px;
+            left: 1800px;
+            transform-style: preserve-3d;
+            perspective: 600px;
+            transition: 2s;
+            
+        }
+      
+        .book6_nav_1,.book6_nav_2,.book6_nav_3,.book6_nav_4,.book6_nav_5{
+            width: 150px;
+            height: 220px;
+            position: absolute;
+            transform-origin: left;
+            background-size: cover;
+            transition: calc(var(--i)*1s);
+            z-index: calc(var(--i)*99);
+        }
+
+        .book6:hover .book6_nav_1{
+            border-left: #576574 0px solid;
+        }
+        .book6:hover .book6_nav_2,.book6:hover .book6_nav_3,.book6:hover .book6_nav_4,.book6:hover .book6_nav_5{
+            /* css调转180度实现页面翻动后效果 */
+            transform: rotateY(-180deg);
+            /* 翻页延迟和层级*/
+            transition: calc(var(--s)*.6s);
+            z-index: calc(var(--s)*-99);
+        }
+        .book6:hover{
+            /* 平移 */
+            transform: translateX(100px);
+        }
+        .book7{
+            width: 150px;
+            height: 200px;
+            position: absolute;
+            top: 550px;
+            left: 300px;
+            transform-style: preserve-3d;
+            perspective: 600px;
+            transition: 2s;
+            
+        }
+      
+        .book7_nav_1,.book7_nav_2,.book7_nav_3,.book7_nav_4,.book7_nav_5{
+            width: 150px;
+            height: 200px;
+            position: absolute;
+            transform-origin: left;
+            background-size: cover;
+            transition: calc(var(--i)*1s);
+            z-index: calc(var(--i)*99);
+        }
+
+        .book7:hover .book7_nav_1{
+            border-left: #576574 0px solid;
+        }
+        .book7:hover .book7_nav_2,.book7:hover .book7_nav_3,.book7:hover .book7_nav_4,.book7:hover .book7_nav_5{
+            /* css调转180度实现页面翻动后效果 */
+            transform: rotateY(-180deg);
+            /* 翻页延迟和层级*/
+            transition: calc(var(--s)*.6s);
+            z-index: calc(var(--s)*-99);
+        }
+        .book7:hover{
+            /* 平移 */
+            transform: translateX(100px);
+        }
+        .book8{
+            width: 150px;
+            height: 200px;
+            position: absolute;
+            top: 550px;
+            left: 600px;
+            transform-style: preserve-3d;
+            perspective: 600px;
+            transition: 2s;
+            
+        }
+      
+        .book8_nav_1,.book8_nav_2,.book8_nav_3,.book8_nav_4,.book8_nav_5{
+            width: 150px;
+            height: 200px;
+            position: absolute;
+            transform-origin: left;
+            background-size: cover;
+            transition: calc(var(--i)*1s);
+            z-index: calc(var(--i)*99);
+        }
+
+        .book8:hover .book8_nav_1{
+            border-left: #576574 0px solid;
+        }
+        .book8:hover .book8_nav_2,.book8:hover .book8_nav_3,.book8:hover .book8_nav_4,.book8:hover .book8_nav_5{
+            /* css调转180度实现页面翻动后效果 */
+            transform: rotateY(-180deg);
+            /* 翻页延迟和层级*/
+            transition: calc(var(--s)*.6s);
+            z-index: calc(var(--s)*-99);
+        }
+        .book8:hover{
+            /* 平移 */
+            transform: translateX(100px);
+        }
+        .book9{
+            width: 150px;
+            height: 200px;
+            position: absolute;
+            top: 550px;
+            left: 900px;
+            transform-style: preserve-3d;
+            perspective: 600px;
+            transition: 2s;
+            
+        }
+      
+        .book9_nav_1,.book9_nav_2,.book9_nav_3,.book9_nav_4,.book9_nav_5{
+            width: 150px;
+            height: 200px;
+            position: absolute;
+            transform-origin: left;
+            background-size: cover;
+            transition: calc(var(--i)*1s);
+            z-index: calc(var(--i)*99);
+        }
+
+        .book9:hover .book9_nav_1{
+            border-left: #576574 0px solid;
+        }
+        .book9:hover .book9_nav_2,.book9:hover .book9_nav_3,.book9:hover .book9_nav_4,.book9:hover .book9_nav_5{
+            /* css调转180度实现页面翻动后效果 */
+            transform: rotateY(-180deg);
+            /* 翻页延迟和层级*/
+            transition: calc(var(--s)*.6s);
+            z-index: calc(var(--s)*-99);
+        }
+        .book9:hover{
+            /* 平移 */
+            transform: translateX(100px);
+        }
+        .book10{
+            width: 150px;
+            height: 200px;
+            position: absolute;
+            top: 550px;
+            left: 1200px;
+            transform-style: preserve-3d;
+            perspective: 600px;
+            transition: 2s;
+            
+        }
+      
+        .book10_nav_1,.book10_nav_2,.book10_nav_3,.book10_nav_4,.book10_nav_5{
+            width: 150px;
+            height: 200px;
+            position: absolute;
+            transform-origin: left;
+            background-size: cover;
+            transition: calc(var(--i)*1s);
+            z-index: calc(var(--i)*99);
+        }
+
+        .book10:hover .book10_nav_1{
+            border-left: #576574 0px solid;
+        }
+        .book10:hover .book10_nav_2,.book10:hover .book10_nav_3,.book10:hover .book10_nav_4,.book10:hover .book10_nav_5{
+            /* css调转180度实现页面翻动后效果 */
+            transform: rotateY(-180deg);
+            /* 翻页延迟和层级*/
+            transition: calc(var(--s)*.6s);
+            z-index: calc(var(--s)*-99);
+        }
+        .book10:hover{
+            /* 平移 */
+            transform: translateX(100px);
+        }
+        .book11{
+            width: 150px;
+            height: 200px;
+            position: absolute;
+            top: 550px;
+            left: 1500px;
+            transform-style: preserve-3d;
+            perspective: 600px;
+            transition: 2s;
+            
+        }
+      
+        .book11_nav_1,.book11_nav_2,.book11_nav_3,.book11_nav_4,.book11_nav_5{
+            width: 150px;
+            height: 200px;
+            position: absolute;
+            transform-origin: left;
+            background-size: cover;
+            transition: calc(var(--i)*1s);
+            z-index: calc(var(--i)*99);
+        }
+
+        .book11:hover .book11_nav_1{
+            border-left: #576574 0px solid;
+        }
+        .book11:hover .book11_nav_2,.book11:hover .book11_nav_3,.book11:hover .book11_nav_4,.book11:hover .book11_nav_5{
+            /* css调转180度实现页面翻动后效果 */
+            transform: rotateY(-180deg);
+            /* 翻页延迟和层级*/
+            transition: calc(var(--s)*.6s);
+            z-index: calc(var(--s)*-99);
+        }
+        .book11:hover{
+            /* 平移 */
+            transform: translateX(100px);
+        }
+        .book12{
+            width: 150px;
+            height: 200px;
+            position: absolute;
+            top: 550px;
+            left: 1800px;
+            transform-style: preserve-3d;
+            perspective: 600px;
+            transition: 2s;
+            
+        }
+      
+        .book12_nav_1,.book12_nav_2,.book12_nav_3,.book12_nav_4,.book12_nav_5{
+            width: 150px;
+            height: 200px;
+            position: absolute;
+            transform-origin: left;
+            background-size: cover;
+            transition: calc(var(--i)*1s);
+            z-index: calc(var(--i)*99);
+        }
+
+        .book12:hover .book12_nav_1{
+            border-left: #576574 0px solid;
+        }
+        .book12:hover .book12_nav_2,.book12:hover .book12_nav_3,.book12:hover .book12_nav_4,.book12:hover .book12_nav_5{
+            /* css调转180度实现页面翻动后效果 */
+            transform: rotateY(-180deg);
+            /* 翻页延迟和层级*/
+            transition: calc(var(--s)*.6s);
+            z-index: calc(var(--s)*-99);
+        }
+        .book12:hover{
+            /* 平移 */
+            transform: translateX(100px);
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div style="flex-direction: column;">
+        <img src="img/5-3/111.png">
+        <img src="img/5-3/222.png" style="position:absolute;left:40px;top:180px;"> 
+    </div>   
+            <a href="5game.html" target="-blank" >
+            <img src="img/back.png" style="width:90px;position: absolute;right:1%;">  
+            </a>      
+    <!-- 先构建需要主体框架 -->
+    <div class="book">
+            <div class="book_nav_1" style="--i:5;
+            background-image:url(img/5-3/2-1.png);background-size:100%;">
+            </div>
+            <div class="book_nav_2" style="--i:4;--s:10;background-image:url(img/5-3/2-1.png);background-size:100%;">
+            </div>
+        </div>
+
+    <div class="book2">
+            <div class="book2_nav_1" style="--i:5;
+            background-image:url(img/5-3/2-2.png);background-size:100%;">
+            </div>
+            <div class="book2_nav_2" style="--i:4;--s:10;background-image:url(img/5-3/2-2.png);background-size:100%;">
+            </div>
+    </div>        
+    <div class="book3">
+            <div class="book3_nav_1" style="--i:5;
+            background-image:url(img/5-3/2-3.png);background-size:100%;">
+            </div>
+            <div class="book3_nav_2" style="--i:4;--s:10;background-image:url(img/5-3/2-3.png);background-size:100%;">
+            </div>
+    </div>
+    <div class="book4">
+            <div class="book4_nav_1" style="--i:5;
+            background-image:url(img/5-3/2-4.png);background-size:100%;">
+            </div>
+            <div class="book4_nav_2" style="--i:4;--s:10;background-image:url(img/5-3/2-4.png);background-size:100%;">
+            </div>
+    </div>    
+    <div class="book5">
+            <div class="book5_nav_1" style="--i:5;
+            background-image:url(img/5-3/2-5.png);background-size:100%;">
+            </div>
+            <div class="book5_nav_2" style="--i:4;--s:10;background-image:url(img/5-3/2-5.png);background-size:100%;">
+            </div>
+    </div> 
+    <div class="book6">
+            <div class="book6_nav_1" style="--i:5;
+            background-image:url(img/5-3/2-6.png);background-size:100%;">
+            </div>
+            <div class="book6_nav_2" style="--i:4;--s:10;background-image:url(img/5-3/2-6.png);background-size:100%;">
+            </div>
+    </div>
+    <div class="book7">
+            <div class="book7_nav_1" style="--i:5;
+            background-image:url(img/5-3/2-7.png);background-size:100%;">
+            </div>
+            <div class="book7_nav_2" style="--i:4;--s:10;background-image:url(img/5-3/2-7.png);background-size:100%;">
+            </div>
+    </div>
+    <div class="book8">
+            <div class="book8_nav_1" style="--i:5;
+            background-image:url(img/5-3/2-8.png);background-size:100%;">
+            </div>
+            <div class="book8_nav_2" style="--i:4;--s:10;background-image:url(img/5-3/2-8.png);background-size:100%;">
+            </div>
+    </div> 
+    <div class="book9">
+            <div class="book9_nav_1" style="--i:5;
+            background-image:url(img/5-3/2-9.png);background-size:100%;">
+            </div>
+            <div class="book9_nav_2" style="--i:4;--s:10;background-image:url(img/5-3/2-9.png);background-size:100%;">
+            </div>
+    </div>       
+    <div class="book10">
+            <div class="book10_nav_1" style="--i:5;
+            background-image:url(img/5-3/2-10.png);background-size:100%;">
+            </div>
+            <div class="book10_nav_2" style="--i:4;--s:10;background-image:url(img/5-3/2-10.png);background-size:100%;">
+            </div>
+    </div>
+    <div class="book11">
+            <div class="book11_nav_1" style="--i:5;
+            background-image:url(img/5-3/2-11.png);background-size:100%;">
+            </div>
+            <div class="book11_nav_2" style="--i:4;--s:10;background-image:url(img/5-3/2-11.png);background-size:100%;">
+            </div>
+    </div>
+
+    <div class="book12">
+            <div class="book12_nav_1" style="--i:5;
+            background-image:url(img/5-3/2-12.png);background-size:100%;">
+            </div>
+            <div class="book12_nav_2" style="--i:4;--s:10;background-image:url(img/5-3/2-12.png);background-size:100%;">
+            </div>
+    </div>    
+<!--     <div class="zhengzhi" >        </div>
+        <div class="book2" id="a"> 
+            <div class="meijian1" style="--i:1;
+            background-image:url(img/5-3/1-1.png);background-size:100%;">
+            </div>
+            <div class="book_nav_2" style="--i:20;--s:8;background-image:url(img/5-3/1-1.png);background-size:100%;">
+            </div>
+        </div> -->
+
+
+<!--     <div class="demo">
+
+        <br/>
+        选择文本字体颜色：<br/>
+        <input type="color" id="color" value="#ffc600" onchange="colorchange()">
+        <p class="artical">背景颜色展示</p>
+        <div id="a"></div>        
+    </div>
+ -->
+
+</body>
+</html>

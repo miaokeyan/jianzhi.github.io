@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/css.css">
+    <style>
+        .sunburst{
+            position: absolute;
+            left:13%;
+            top: 15%;
+            z-index: 50;
+            
+
+        }
+        .use{
+            width: 400px;
+            opacity: 0.8;
+            position: absolute;
+            /* left:19.6%;
+            top: 77%; */
+            left:58%;
+            top: 18%;
+            z-index: 1;
+            
+        }
+        .technique {
+            width: 300px;
+            position: absolute;
+            /* left:62%;
+            top: 34%; */
+            left:62%;
+            top: 49%;
+            transition: all 0.2s;
+	        opacity: 0.8;
+            /* animation: scaleDraw 4s ease-in-out infinite; */
+        }
+
+        .technique:hover{
+            transform: scale(1.1);
+            opacity: 1;
+        }
+        .application{
+            width: 300px;
+            position: absolute;
+            /* left:62%;
+            top: 64%; */
+            left:62%;
+            top: 72%;
+            transition: all 0.2s;
+	        opacity: 0.8;
+        }
+        .application:hover{
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div class="nav">
+        <ul>
+            <li><a href="1intro.html">溯源</a></li>
+            <li><a href="2map.html">地图</a></li>
+            <li  class="act"><a href="3class.html">分类</a></li>
+            <li><a href="4materials.html">用材</a></li>
+            <li><a href="5game.html">游戏</a></li>
+        </ul>
+    </div>
+
+
+    <!-- 旭日图分类 -->
+    <div class="right">
+
+        <div class="sunburst" style="width: 650px;height:650px;" ></div>
+        <script src="js/echarts.js"></script>
+        <script src="js/sunburst.js"></script>
+    
+    </div>
+
+    <div>
+        <a href="../index.html"><img src="./img/返回首页.png" alt="" style="width:130px;position:absolute;
+            right:40px;
+            bottom:20px ;"></a>
+    </div>
+    <div>
+        <img src="./img/使用手册3.png" alt="" class="use">
+    </div>
+    <div>
+        <a href="./3-1.html"><img src="./img/技法一览2.png" alt="" class="technique"></a>
+        <a href="./3-2.html"><img src="./img/用途一览2.png" alt="" class="application"></a>
+
+    </div>
+</body>
+</html>

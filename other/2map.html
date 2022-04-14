@@ -1,0 +1,201 @@
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <title>Document</title>
+    <link rel="stylesheet" href="css/map.css">
+   <link rel="stylesheet" href="css/css.css">
+    <style>
+    body,
+    html,
+    #container {
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        font-family: "微软雅黑";
+        
+    }
+    /* 清除百度logo */
+    .BMap_cpyCtrl {
+            display: none;
+        }
+        .anchorBL {
+            display: none;
+        }
+
+    /* 页面滚动条设置 */
+       ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background-color:rgb(255, 255, 255);
+        -webkit-border-radius: 2em;
+        -moz-border-radius: 2em;
+        border-radius:2em;
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color:rgb(208, 208, 208);
+        -webkit-border-radius: 2em;
+        -moz-border-radius: 2em;
+        border-radius:2em;
+      }
+
+    .map{     
+        z-index: 50;
+    }
+
+    .shujv{position: absolute;
+        right:65px; bottom:60px;
+        font-size:16px; 
+        color:#585858;
+        font-family: '宋体';
+        z-index: 51;
+    }
+/* 右侧说明 */
+    .explanation{
+        width:300px;
+        height: 450px;
+        position: absolute;
+        right:4%; 
+        top:15%;
+        background-color: bisque;
+        z-index: 52;
+    }
+
+
+
+
+    </style>
+    <!-- 必须加http,否则外部打开是默认加上file,地图无法运行 -->
+    <script src="http://api.map.baidu.com/api?type=webgl&v=1.0&ak=pUz7uDTgu6ioRZrkhSzuS4TMKWlyVsZo"></script>
+
+</head>
+
+<body>
+    <!-- alt+shift 列选择器 -->
+    <div class="tc_bk" id="tc_bk"></div>
+    <div class="nav" style="z-index: 100;">
+        <ul>
+            <li><a href="1intro.html">溯源</a></li>
+            <li  class="act"><a href="2map.html">地图</a></li>
+            <li><a href="3class.html">分类</a></li>
+            <li><a href="4materials.html">用材</a></li>
+            <li><a href="5game.html">游戏</a></li>
+        </ul>
+    </div>
+
+    <!-- 地图 -->
+
+        <div id="container" class="map"></div>
+        
+        <div class="shujv">
+            <p>说明：<br/>已申遗：已列入国家级非物质文化遗产名录<br/>资料来源：中国非遗网、中国知网<br/>地图审图号：GS (2021) 6026号
+              </p>
+        </div>
+        <!-- <div class="explanation"></div> -->
+        
+        <div>
+            <a href="../index.html"><img src="./img/返回首页.png" alt="" style="width:130px;position: absolute;
+                right:40px;
+                bottom:20px ;
+                z-index: 52;"></a>
+        </div>
+</body>
+</html>
+
+<script>
+    var map = new BMapGL.Map("container",{minZoom:5,maxZoom:6}); // 创建Map实例,设置地图允许的最小/大级别
+    map.centerAndZoom(new BMapGL.Point(110.4035,39.915),5); 
+    map.enableScrollWheelZoom(true);
+
+    var adds = [
+        [87.476819,43.894927,"<div><h2 style='margin:0 0 1px 0;'>新疆维吾尔自治区著名剪纸</h2><p><strong>哈密维吾尔族剪纸：</strong><br/>哈密维吾尔族农民绘画和剪纸，源于农村生活，反映农民情趣，不但具有鲜明、纯朴、浪漫、活泼的特点，而且写实性强，乡土气息和生活气息十分浓厚，民族风格独特，民族特色鲜明。</p><p><strong>吐鲁番地区剪纸：</strong><br/>刺绣花样是借用民间剪纸艺术中最为典型的实例，可以说刺绣艺术存在于吐鲁番人民生活的方方面面，这里的民间刺绣具有鲜明的地域特征和开放的吸收性，现为国家级非物质文化遗产保护项目。</p><img src='./img/哈密.jpg' style='height:200px;'class='pic'/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src='./img/吐鲁番.jpg' style='height:200px;'class='pic'/></div>"],
+        [91.13,29.65,"<div><h2 style='margin:0 0 5px 0;'>西藏自治区著名剪纸</h2><p>民间剪纸艺术丰富多彩，暂无代表门派。</p>&nbsp<img src='./img/西藏.jpg' style='height:350px;'class='pic'/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>"],
+        [111.73, 40.83,"<div><h2 style='margin:0 0 5px 0;'>内蒙古自治区著名剪纸</h2>已申遗：和林格尔剪纸、包头剪纸<br/><hr/><p><strong>和林格尔剪纸：</strong><br/>内蒙古自治区和林格尔县传统美术，国家级非物质文化遗产之一，是北方草原游牧文化与中原农耕文化互相影响交融的产物，具有复杂的历史背景和深厚的文化内涵。其作品给人纯真、质朴、清新的美感，显得旷达而浪漫。</p><p><strong>包头剪纸：</strong><br/>主要分布于内蒙古包头及其周边地区，各民族的独特文化与风俗人情互相融合，取长补短，从而形成了独具特色的地方文化传统。是北方草原游牧文化与中原农耕文化互相影响交融的产物，风格单纯质朴，古拙而健美，富有浓郁的草原气息。</p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src='./img/和林.jpg' style='height:200px;'class='pic'/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src='./img/包头.jpg' style='height:200px;'class='pic'/><br/></div>"],
+        [101.78, 36.62,"<div><h2 style='margin:0 0 5px 0;'>青海省著名剪纸</h2><p><strong>河湟剪纸:</strong><br/>内容和样式以传统的民间纹样为主，剪纸浑厚粗犷，不过多追求精剪细刻。构图融合传统技法和现代表现元素，呈现丰富多彩的现实生活和多元的民族文化；剪法追求线条流畅、形象飘逸灵动，突显民间艺术家鲜有的创作主体意识。</p><img src='./img/河湟.jpg' style='height:190px;'class='pic'/>&nbsp&nbsp&nbsp</div>"],
+        [104.07, 30.67,"<div><h2 style='margin:0 0 5px 0;'>四川省著名剪纸</h2><p><strong>自贡剪纸:</strong><br/>其形体结构不再是照相似的模拟真实形体，而是经过巧妙构思的艺术形象。运用各种图案来构成剪纸的艺术词汇和语言，增强艺术感染力。同时采用刚劲的块面和柔和的细线的对比来组成艺术的旋律和节奏，有时还可以表现出金石和书法的韵味。</p><p><strong>西充剪纸:</strong><br/>既有北方剪纸的刚劲有力、粗犷豪放，又有南方剪纸的妩媚细腻、纤巧秀丽，更有川北剪纸“巴人文化”的韵味，构图巧妙、生动形象。同时吸收了川北石刻、 川北泥塑以及川北皮影的部分优良特点，形成了自己独特的风格。</p><p><strong>平武剪纸:</strong><br/>它在秉承传统剪纸技艺的基础上，融合了古老、朴素的白马藏族民俗剪纸和原始、单纯的羌族剌绣图，形成了独特的艺术风格，是一门具有较高的艺术性与观赏性的剪纸艺术。</p>&nbsp&nbsp<img src='./img/自贡.jpg' class='pic' style='height:250px;'>&nbsp&nbsp&nbsp<img src='./img/西充.jpg' class='pic' style='height:250px;'><br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src='./img/平武.jpg' class='pic' style='height:250px;'></div>"],
+        [126.53, 45.8,"<div><h2 style='margin:0 0 5px 0;'>黑龙江省著名剪纸</h2>已申遗：海伦剪纸、方正剪纸<br/><hr/><p><strong>海伦剪纸:</strong><br/>特点是画幅较大，风格粗犷，刀锋稚拙而有力。多采用“剪影起花”（即阴刻）的方式剪出形象，再用松烟熏黑，在画面镂空处的背面衬以五彩纸片，具有白山黑水的东北雪域的、对比强烈、爽朗浓重的风格。</p><p><strong>方正剪纸:</strong><br/>方正剪纸乡土气息浓郁，图案简洁明朗，概括力强，式样繁多，内容丰富，工艺细腻，在创作观念和整体创作上基本打破了陈陈相因的民间剪纸模式范畴，感染力、趣味性强，自然大方，艺术语言更加明朗化，风格日臻完善。</p><img src='./img/海伦.jpg' style='height:200px;'class='pic'/>&nbsp&nbsp&nbsp<img src='./img/方正.jpg' style='height:200px;'class='pic'/></div>"],
+        [103.82, 36.07,"<div><h2 style='margin:0 0 5px 0;'>甘肃省著名剪纸</h2>已申遗：定西剪纸、会宁剪纸、庆阳剪纸<br/><hr/><p><strong>甘肃陇东剪纸（庆阳剪纸）:</strong><br/>陇东地区的剪纸具有古拙奔放的风格特征。其在本地区内部也存在着一定的风格差异，东、西部山区的剪纸形式简练，造型原始粗犷，表现题材多飞禽、走兽和家畜；中部平原地带的剪纸造型较为华丽，表现题材中民间故事、四季花卉等内容有所增加。</p><p><strong>甘肃陇中剪纸:</strong><br/>由于陇中经济发达、文化积淀深厚，既是秦长城的起点，也是汉唐丝绸之路的必经之路，自古以来商贾兴盛。所以，陇中地区的民间剪纸风格灵秀典雅、富丽堂皇、秀丽工整，剪纸手法娴熟。</p><p><strong>河西剪纸:</strong><br/>河西地区地处甘肃西部――河西走廊，历史上这里是游牧民族生活、居住的地方。所以，此地的民间剪纸风格纯朴大方，富有装饰意味，其形式主要是窗花、壁花和衣饰刺绣花样等。</p><img src='./img/庆阳.jpg' style='height:250px;'class='pic'/></div>"],
+        [102.72, 25.05,"<div><h2 style='margin:0 0 5px 0;'>云南省著名剪纸</h2>已申遗：傣族剪纸<br/><hr/><p><strong>傣族剪纸:</strong><br/>其较早形式源于傣族祭祀仪式所用的纸幡，后来在佛教文化和中原文化的影响下逐步充实发 展，形成完善的剪纸并被广泛应用于祭祀、赕佛、丧葬、喜庆及居家装饰等方面。以特制的剪刀、刻刀、凿子和锤子为工具，剪法独具特色，颇具艺术价值。</p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src='./img/傣族.png' style='height:280px;'class='pic'/></div>"],
+        [108.37, 22.82,"<div><h2 style='margin:0 0 5px 0;'>广西壮族自治区著名剪纸</h2><p><strong>广西壮族剪纸:</strong><br/>广西壮族剪纸:<br/>壮族为古代“百越人”的后裔，广西中南、西南一带的壮族剪纸，多有形态各异的小红人形頒或“出骑打猎”或茜鼓咼猷，形頒简洁生动，颇有花山崖壁画遗风。祭祀剪纸是广西少数民族剪纸的一大类别。</p><p><strong>仫佬族剪纸:</strong><br/>是一种用剪刀或刻刀在纸上剪刻花纹图案用于装点生活或配合仫佬族各种民俗活动的传统美术。有着广泛的群众基础，交融于仫佬族人民的社会生活，是仫佬族各种民俗活动的重要组成部分，体现了仫佬族人民特有的审美意趣。</p><img src='./img/壮族.png' style='height:200px;'class='pic'/>&nbsp&nbsp&nbsp</div>"],
+        [112.93, 28.23,"<div><h2 style='margin:0 0 5px 0;'>湖南省著名剪纸</h2>已申遗：梅山剪纸、踏虎凿花<br/><hr/><p><strong>苗族剪纸:</strong><br/>主要用作刺绣底稿，苗族刺绣的多样性在于剪纸花样的丰富。剪纸构图丰满，内容怪诞，刀法简洁有力，纹样细腻。由于在剪纸上要表达对刺绣工艺的要求，如在针法上的提示，常常剪后要再以针刺出点组成的虚线或以剪破不剪空的方法示意，这些手法使剪纸粗中有细，耐人寻味。</p><img src='./img/苗族.png' style='height:200px;'class='pic'/>&nbsp&nbsp&nbsp</div>"],
+        [108.93, 34.27,"<div><h2 style='margin:0 0 5px 0;'>陕西省著名剪纸</h2>已申遗：延川剪纸、旬邑彩贴剪纸、安塞剪纸<br/><hr/><p><strong>安塞剪纸:</strong><br/>不仅造型美观，剪工精致，而且具有深邃的历史文化内涵，被誉为“地上文物”和文化“活化石”。 安塞剪纸形式多样，风格淳厚凝炼，线条粗犷明快，寓意单纯质朴，充满对平安吉祥的祈望之情。</p><p><strong>旬邑彩贴剪纸:</strong><br/>是由旬邑民间单色剪纸演变而形成的一种剪纸形式，其起源于清代末年。它是在单色剪纸基础上产生的一种多层次、多色彩、抽象、神秘、繁而不乱、艳而不俗的作品，突破了单色剪纸的小巧形式，其表现形态生动而自由。</p><p><strong>延川剪纸:</strong><br/>是在农耕社会基础上产生的一种表达农妇祈求平安幸福的传统民间艺术，形式多样、题材广泛、造型简练淳朴、粗犷浑厚、热情奔放，具有浓厚的乡土气息和鲜明的地方特色，堪称北方农耕社会生活的缩影和民俗生活的大观园。</p><img src='./img/安塞.jpg' style='height:200px;'class='pic'/>&nbsp&nbsp&nbsp<img src='./img/旬邑.jpg' style='height:200px;'class='pic'/>&nbsp&nbsp&nbsp<img src='./img/延川.jpg' style='height:200px;'class='pic'/></div>"],
+        [113.27, 23.13,"<div><h2 style='margin:0 0 5px 0;'>广东省著名剪纸</h2>已申遗：广东剪纸（潮州市、佛山市、汕头市）<br/><hr/><p><strong>佛山剪纸:</strong><br/>它是“不用‘纸’的剪纸艺术”。佛山铜凿剪纸使用的材料是薄如蝉翼的铜箔，因此作品能呈现出珠光宝气、金碧辉煌的独特效果，早期常用于鞭炮、烟花的包装及喜盒的装饰。且能做到大幅画面，内容与形式复杂的高难度剪纸艺术作品。</p><p><strong>潮阳剪纸:</strong><br/>潮阳剪纸造型灵活，构图以对称为主，结构严谨，饱满而不杂乱，尤其以“花中套花”的布局 最具特点，疏密有致，剔透玲珑。潮州剪纸不同剪纸艺人往往有细致、豪放、秀逸等不同风格表现，善于将三五张色纸叠在一起，灵巧 地运使剪刀，以娴熟的技巧剪出各种花纹图案。特点在于不画稿，艺人们仅凭记忆和想象，一手拿纸，一手运剪，直接将花样剪出。</p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src='./img/佛山.png' style='height:300px;'class='pic'/>&nbsp&nbsp&nbsp</div>"],
+        [125.32, 43.9,"<div><h2 style='margin:0 0 5px 0;'>吉林省著名剪纸</h2>已申遗：长白山满族剪纸<br/><hr/><p><strong>长白山满族剪纸:</strong><br/>起源于满族所信奉的萨满教，最早用于祭祀。多表现满族的萨满崇尚与神灵崇拜、满族的生活习俗、生产习俗、婚丧习俗等，具有十分浓郁的民族特色。同时有许多区别于其他民族的剪纸技艺，人物、动物身上多不打毛，常用香火烧出动物的眼睛和花纹，用炭黑画出纹饰，随意自然，具有鲜明的艺术个性。</p><img src='./img/长白山.jpg' style='height:260px;'class='pic'/></div>"],
+        [114.52, 38.05,"<div><h2 style='margin:0 0 5px 0;'>河北省著名剪纸</h2>已申遗：丰宁满族剪纸、蔚县剪纸<br/><hr/><p><strong>蔚县剪纸:</strong><br/>源于明代，是一种风格独特、在国内外享有盛誉的传统民间艺术。清代末年，蔚县剪纸工具改革，由“剪”变“刻”，以阴刻为主，阳刻为辅。20世纪初，蔚县剪纸在构图、造型和色彩上逐渐形成了自己独特的艺术风格，开创了独具一格的民间剪纸新流派。</p><img src='./img/蔚县.jpg' style='height:300px;'class='pic'/>&nbsp&nbsp&nbsp</div>"],
+        [114.30, 30.6,"<div><h2 style='margin:0 0 5px 0;'>湖北省著名剪纸</h2>已申遗：仙桃雕花剪纸、孝感雕花剪纸、鄂州雕花剪纸<br/><hr/><p><strong>孝感雕花剪纸:</strong><br/>孝感雕花剪纸合南北艺术之长，既有北方粗犷苍劲的风格，又有南方玲珑细腻的特点，以清新活泼、古朴典雅的风格特立于中国民间艺术之林。其工艺手法主要包括“剪”和“雕”两种方式，具有很强的观赏性和装饰性。</p><p><strong>武汉剪纸:</strong><br/>武汉剪纸的主题纹样以龙凤、虎兽鹤鹿纹样和各类花鸟居多，有着浓郁的楚文化特点，其中凤为楚之图腾，多用于婚俗和服饰装饰。武汉剪纸破刀工整、构图丰满、线条流畅、疏密有致，既有北派粗犷写意、又有南派精雕细刻的神韵。</p><p><strong>鄂州雕花剪纸:</strong><br/>鄂州雕花剪纸是湖北地方民俗的重要载体，题材内容涉及生活的方方面面，呈示出鲜明的地域性特征。创制过程中刀剪俱用，完成的作品构图匀称，风格流畅细腻、生动传神，集实用性和装饰性于一体。</p><p><strong>沔阳雕花剪纸:</strong><br/>流传于湖北仙桃市一带，在明末清初即已形成自己的风格特征，以构图匀称、雕工纤细见长。构图繁复完整，黑白虚实分明，刀法流利工整，破工精细严谨，具有写实而兼写意、艺术语言丰富、装饰风味浓重的特点，在民间剪纸中独具一格。</p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src='./img/孝感.jpg' style='height:200px;'class='pic'/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src='./img/鄂州.jpg' style='height:200px;'class='pic'/><br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src='./img/沔阳.jpg' style='height:200px;'class='pic'/></div>"],
+        [106.63, 26.65,"<div><h2 style='margin:0 0 5px 0;'>贵州省著名剪纸</h2>已申遗：水族剪纸、苗族剪纸<br/><hr/><p><strong>侗族剪纸:</strong><br/>多用于刺绣的底样和蓝本，主要有衣袖花、背带花、帽花等，题材以花卉、鸟虫较常见，表现形式较侧重纹样轮廓，内部针刺，很少剪镂，给绣花者留下再创造的余地。</p><p><strong>苗族剪纸:</strong><br/>可分为革东型和新民、新合型两类，风格各不相同。革东型剪纸构图饱满，画面内容丰富，纹样多为动物、花卉和人物，其中不乏神话传说中的形象；新民、新合型剪纸构图上相对灵动，纹样多为自然界中的花卉、鸟蝶等，造型生动异常。</p><img src='./img/侗族.png' style='height:300px;'class='pic'/></div>"],
+        [116.98, 36.67,"<div><h2 style='margin:0 0 5px 0;'>山东省著名剪纸</h2>已申遗：滨州民间剪纸、莒县过门笺、高密剪纸、烟台剪纸<br/><hr/><p><strong>烟台剪纸:</strong><br/>在风格上，荣成、文登一带粗犷大方，浑厚朴实，多用乌黑的胶皂纸所剪的鱼、虫、鸟、兽作为器物的装饰；掖县的剪纸，线条细腻，作品以小巧玲珑、纤丽多姿见长；蓬莱一带则以大片虚实对比的表现手法，使画面十分生动，剪出的人物感情充沛，花、鸟、虫、鱼栩栩如生。</p><img src='./img/烟台.jpg' style='height:300px;'class='pic'/></div>"],
+        [115.85, 28.68,"<div><h2 style='margin:0 0 5px 0;'>江西省著名剪纸</h2>已申遗：新干剪纸、瑞昌剪纸<br/><hr/><p><strong>瑞昌剪纸:</strong><br/>受楚文化与吴越文化的影响，融汇了南北特点而形成了独特的个性，既有精巧、秀丽的阴柔之美，又有古朴、豪放的阳刚之美，刚柔相济，别具风神。有时会采用非镂空的手法，造成时而模糊时而清晰的艺术效果，使瑞昌剪纸带上含蓄、隐秀的神韵和朦胧、神秘的色彩。</p><img src='./img/瑞昌.png' style='height:300px;'class='pic'/>&nbsp&nbsp&nbsp</div>"],
+        [113.62, 34.75,"<div><h2 style='margin:0 0 5px 0;'>河南省著名剪纸</h2>已申遗：卢氏剪纸、灵宝剪纸、辉县剪纸<br/><hr/><p><strong>卢氏剪纸:</strong><br/>卢氏地处豫西边陲，相对较为封闭，剪纸艺术较少受到现代商业的影响，时至今日，卢氏剪纸仍然运用最简易的材料和工具，表达着劳动者朴素的人生价值观。卢氏黄河流域一带，剪纸构图粗犷、线条稚拙，原生态气息浓厚；卢氏长江流域一带，剪纸以流畅委婉为主，构图精巧细致，线条流畅圆润。</p><p><strong>灵宝剪纸:</strong><br/>灵宝市悠久的历史及深厚的文化底蕴为这一地区民间剪纸艺术的孕育和发展提供了得天独厚的有利条件。灵宝剪纸分为单色和染色两种，制作以剪为主，也有刻纸的方式。在长期发展过程中，自然形成了粗犷、质朴、率真、浑厚的艺术特色。</p><p><strong>辉县剪纸:</strong><br/>起源于农耕社会，其题材内容都真切地反映着农民生活和农村社会的特点，散发出浓郁的乡土气息。特点是以阳刻为主，构图朴实饱满，造型生动逼真，色彩对比强烈。常以人物、禽兽、花木、昆虫为表现内容，通过这些形象表达祛邪祈福之意。</p><img src='./img/卢氏.jpg' style='height:300px;'class='pic'/></div>"],
+        [123.43, 41.8,"<div><h2 style='margin:0 0 5px 0;'>辽宁省著名剪纸</h2>已申遗：庄河剪纸、建平剪纸、医巫闾山满族剪纸、新宾满族剪纸、岫岩满族剪纸<br/><hr/><p><strong>庄河剪纸:</strong><br/>在剪纸表现上既有北方剪纸粗犷、朴拙、浑厚，又有南方细腻、精巧、俊逸的艺术特征。其形式和内容传统韵味十足，造型手法巧拙相济，有质朴而不失精美，豪放而不失严谨，雅俗共赏的剪纸风格。而且突破规范性的框架，显示出开放性的构图特点。</p><p><strong>建平剪纸:</strong><br/>受历史上多民族风俗的浸淫，独特地理环境的影响，形成了建平以蒙族萨满文化为主体的、蒙汉文化相结合的造型粗犷、浪漫的剪纸艺术，它取材广泛，粗犷质朴而又精巧传神，在国内外都有很大影响。</p><p><strong>医巫闾山满族剪纸:</strong><br/>其起源可以追溯到东北亚诸族信仰的萨满教，它以满族人原始的自然神崇拜、始祖神崇拜、生殖繁衍崇拜以及满族风俗为主要表现内容，内容丰富，造型简洁，纹样古朴，它不用繁琐、细密的剪法，不求精致、准确的造型，而主要以博大恢弘的气度和朴拙古茂的神韵取胜。</p><img src='./img/庄河.jpg' style='height:250px;'class='pic'/>&nbsp&nbsp&nbsp<img src='./img/建平.jpg' style='height:250px;'class='pic'/>&nbsp&nbsp&nbsp<img src='./img/医巫.jpg' style='height:300px;'class='pic'/></div>"],
+        [112.55, 37.87,"<div><h2 style='margin:0 0 5px 0;'>山西省著名剪纸</h2>已申遗：太原剪纸、静乐剪纸、广灵染色剪纸、中阳剪纸<br/><hr/><p><strong>中阳剪纸:</strong><br/>南川河流域的民俗剪纸风格细腻、古朴典雅，在中阳剪纸中占据主流地位。刘家坪的剪纸风格纯朴、刚健，西山边远地区的剪纸风格粗犷、浑厚，与南川河流域剪纸的主流风格相依相存，丰富着中阳剪纸的特色。</p><img src='./img/中阳.jpg' style='height:300px;'class='pic'/></div>"],
+        [117.25, 31.83,"<div><h2 style='margin:0 0 5px 0;'>安徽省著名剪纸</h2>已申遗：阜阳剪纸<br/><hr/><p><strong>徽州剪纸:</strong><br/>是徽州传统民间艺术中一个富有生命力的分支，它与徽文化的形成以及徽州手工技艺的发展有着一脉相承之处，在徽州民间俗称为“铰花铲图”、“剪嫚嫚纸”。不仅保留了传统技艺，还善于突破传统，在题材上大胆开拓，逐渐形成了鲜明的艺术特色和风格。</p><p><strong>阜阳剪纸:</strong><br/>兼有南北方剪纸的艺术特色，即粗犷之中蕴纤巧，质朴之中见秀丽，刚柔兼备，情趣醇和。善用粗细线组合，阴阳刻交替的手法，融合我国北方剪纸的粗壮浑厚和南方剪纸纤巧秀丽的风格，形成了刚柔兼备、节奏和谐、朴实优美的地方特色。</p><p><strong>淮北剪纸:</strong><br/>既有北方粗犷豪放的特征，又有南方精巧秀丽的风格。与其它剪纸艺术所不同的是，淮北地区的民俗剪纸艺术更多地关注实用价值，如作为枕头、衣帽、鞋子等绣花纹样，直接用于窗花等喜庆装饰的虽有但并不十分流行。</p><img src='./img/徽州.jpg' style='height:250px;'class='pic'/>&nbsp&nbsp&nbsp<img src='./img/淮北.jpg' style='height:250px;'class='pic'/></div>"],
+        [119.3, 26.08,"<div><h2 style='margin:0 0 5px 0;'>福建省著名剪纸</h2>已申遗:浦城剪纸、柘荣剪纸、漳浦剪纸、泉州（李尧宝）刻纸<br/><hr/><p>福建各地的剪纸都有不同的特点，具有浓厚的当地民俗风情和乡土气息。剪纸构图丰满匀称、对称平衡、线条细腻连贯，显示出独特的艺术风格、浓烈的原始趣味和稚拙美感。泉州艺人刻纸还应用在建筑中家具上，作复印漆画的底版。</p><img src='./img/福建.png' style='height:250px;'class='pic'/></div>"],
+        [120.15, 30.28,"<div><h2 style='margin:0 0 5px 0;'>浙江省著名剪纸</h2>已申遗：桐庐剪纸、浦江剪纸、乐清细纹剪纸<br/><hr/><p><strong>金华剪纸:</strong><br/>浙江金华民间剪纸的戏曲窗花别具一格，作品构图较复杂，但造型古朴、生动形象，阴刻出丰满柔美的线条，尽显精巧富丽。温州乐清细纹刻纸更是以其主题鲜明、主体突出、对比变化黑白分明、纹样工细，以繁衬简的特色著称。</p><p><strong>温州剪纸:</strong><br/>代表有乐清细纹刻纸、平阳太平钿、苍南彩色刻纸、驿头龙船花四大流派。<br/>1）乐清细纹刻纸：线条细如发丝，且条条相连，最细的在一厘米宽的薄纸上能割二十二刀，呈十一条细线，还曾创造了在鲁班尺一寸见方的纸上刻出五十二根线条的最高纪录，堪称剪纸微雕。<br/>2）平阳太平钿：采用红纸，构图简单，以直白的吉语为主，偶缀吉祥花草，讲究对应使用。外形有寿桃、石榴、花瓣等，构图古朴简约。<br/>3）苍南彩色刻纸：糅合了国画、戏曲脸谱、版面、皮影、丝印等多种艺术手法，形式上借鉴河北蔚县点彩剪(刻)纸，刻制吸收乐清细纹刻纸的刀技，点染吸取了西洋水彩画中光和色的运用方法，风格独树一帜。<br/>4）驿头龙船花：集刻纸、年画和木刻印刷为一体，制作工艺独特，不但颇具观赏性，且至今仍保持原生形态，独具特色。现驿头龙船花只有年过花甲的程民统能独立制作完成。</p><img src='./img/金华.jpg' style='height:200px;'class='pic'/>&nbsp&nbsp&nbsp<img src='./img/乐清.jpg' style='height:200px;'class='pic'/>&nbsp&nbsp&nbsp<img src='./img/平阳.jpg' style='height:200px;'class='pic'/>&nbsp&nbsp&nbsp<img src='./img/苍南.jpg' style='height:200px;'class='pic'/></div>"],
+        [118.78, 32.07,"<div><h2 style='margin:0 0 5px 0;'>江苏省著名剪纸</h2>已申遗：金坛刻纸、徐州剪纸、南京剪纸、扬州剪纸<br/><hr/><p><strong>扬州剪纸:</strong><br/>扬州剪纸从刺绣花样发展到现在的艺术型剪纸，其表现手法和中国面白描的手法有异曲同工之妙。整幅作品就是由线条组成，可以说是用剪刀代替毛笔，剪出流畅的线条。作品一般素色为主，使得作品清新素雅，造型不仅传形，更在传神。</p><p><strong>南京剪纸:</strong><br/>南京剪纸的个性特征极为突出，粗中有细，拙中见灵，艺术形式优美异常。其中“斗香花”刻纸在全国独一无二，充分体现出南京剪纸的独特风格。其创作时不用画稿，起剪后线条连绵不断，犹如“一笔画”，一气呵成，技艺十分高超。</p><p><strong>徐州剪纸:</strong><br/>徐州剪纸有两种主要风格，一种以邳州剪纸为代表，作品构图疏密得当，结构粗犷浑厚，喜用变形夸张等手法，显得大胆泼辣；另一种以徐州市区吴国本、张丽君及沛县敬安镇的剪纸为代表，作品风格灵秀俊美、细腻流畅、精巧玲珑。</p><p><strong>金坛刻纸:</strong><br/>常州金坛刻纸由剪纸派生而来，是老百姓表现自己生活情趣的一种艺术样式。它只要一把剪刀、一张红纸，就可以通过灵巧的双手剪出精彩纷呈的作品。为防止刀刻造成的线条断掉，民间艺人们制作了专门的刻板用于刻纸。</p><img src='./img/扬州.jpg' style='height:250px;'class='pic'/>&nbsp&nbsp&nbsp<img src='./img/扬州2.jpg' style='height:250px;'class='pic'/>&nbsp&nbsp&nbsp<img src='./img/扬州3.jpg' style='height:250px;'class='pic'/>&nbsp&nbsp&nbsp<img src='./img/扬州4.jpg' style='height:250px;'class='pic'/>&nbsp&nbsp&nbsp<img src='./img/南京.jpg' style='height:250px;'class='pic'/>&nbsp&nbsp&nbsp<img src='./img/徐州.jpg' style='height:250px;'class='pic'/>&nbsp&nbsp&nbsp<img src='./img/金坛.jpg' style='height:250px;'class='pic'/></div>"],
+        [106.55, 29.57,"<div><h2 style='margin:0 0 5px 0;'>重庆市著名剪纸</h2><p><strong>北碚剪纸：</strong><br/>具有南派剪纸秀丽柔美、图案精巧、技法写实、以刻为主的表现风格，将巴渝大地的地域特色和民俗特色巧夺天工地展现在咫尺之间，同时借鉴并吸收了国画、版画、镶嵌画、布艺等一些艺术形式的技法，力求在内容的丰富性、题材的趣味性、构图的完美明快上下功夫。</p><p><strong>堰兴剪纸：</strong><br/>手法细腻，且吸收了国画、版画、烙画、布贴等诸多表现手法，工艺工整精细、题材广泛、寓意深远。它以各色彩纸为主要材料，以剪代笔，采用剪刻结合的艺术表现手法，呈现出重庆的自然风光、乡土人情和历史景观等，具有浓郁的重庆文化特色。</p><img src='./img/北碚.jpg' style='height:250px;'class='pic'/>&nbsp&nbsp&nbsp<img src='./img/堰兴.jpg' style='height:250px;'class='pic'/></div>"],
+        [106.28, 38.47,"<div><h2 style='margin:0 0 5px 0;'>宁夏回族自治区著名剪纸</h2>已申遗：回族剪纸<br/><hr/><p><strong>回族剪纸：</strong><br/>继承了传统剪纸细腻的一面，但与传统剪纸不同的是，它在表现内容上更侧重反映回族生活，喜欢用静物来表达安静、唯美的感觉，它们以浓厚的回乡气息，扎实的技艺流行民间，表达了农村回族人民质朴的观念。</p><img src='./img/回族.jpg' style='height:300px;'class='pic'/></div>"],
+        [110.32, 20.03,"<div><h2 style='margin:0 0 5px 0;'>海南省著名剪纸</h2><p><strong>海南黎族剪纸：</strong><br/>大安剪纸别名乐东黎族剪纸，因产于海南乐东县大安镇而得名，反映了黎族群众的现实生活以及与当地百姓劳动、生活休戚与共的山山水水、风土人情。以“刻”为主，功夫在刀下，除了极少数对称的图案用剪刀外，使用刻刀较多。</p><img src='./img/海南.jpg' style='height:280px;'class='pic'/></div>"],
+        [121.5, 25.03,"<div><h2 style='margin:0 0 5px 0;'>台湾省著名剪纸</h2><p>台湾传统的剪纸艺术种类繁多，精美细致的图案花纹无处不见台湾剪纸艺人的艺术巧思。其中一位优秀的民间剪纸艺术家李焕章先生就多选用表面铺有蚕丝的绫纸，因为绫纸结实耐用，不易破损。</p></div>"],
+        [116.4, 39.9,"<div><h2 style='margin:0 0 5px 0;'>北京市著名剪纸</h2><p><strong>京派剪纸：</strong><br/>有史以来就先天的具有了宫廷文化艺术、全国文化中心的先决条件，致使京派剪纸从剪纸题材到剪纸风格、再到剪纸技法上都要有京味文化的剪纸语言。以享誉世界的中国红为主，尽显中国文化的底色，象征喜庆祥和。</p><img src='./img/京派.jpg' style='height:250px;'class='pic'/></div>"],
+        [117.2, 39.12,"<div><h2 style='margin:0 0 5px 0;'>天津市著名剪纸</h2><p><strong>大郑剪纸：</strong><br/>大郑剪纸注意外形刻画，人物比例均匀，线条衔接柔和，无明显幅度变化。整体图案浑厚有力，线条流畅，刻画精细。花鸟人物，栩栩如生，情景交融，稳如九鼎，细如纤丝。具有木刻、皮影、工笔画的特色。</p>&nbsp&nbsp<img src='./img/大郑.jpg' style='height:250px;'class='pic'/></div>"],
+        [121.47, 31.23,"<div><h2 style='margin:0 0 5px 0;'>上海市著名剪纸</h2>已申遗：上海剪纸<br/><hr/><p><strong>海派剪纸：</strong><br/>出现于20世纪初，当时多用作门笺、鞋花和绣花样。在近百年的历史演变中，上海剪纸逐渐形成与众不同的“海派”风格，集南北之长，豪放而不粗糙，细腻而不呆板，注重形式美，充满生活气息，在全国各种剪纸中占有独特的地位。</p>&nbsp&nbsp<img src='./img/上海.jpg' style='height:250px;'class='pic'/></div>"],
+
+    ];
+
+
+
+/**标注的信息窗口**/
+    var opts = {
+                width : 730,     // 信息窗口宽度,设为0时将按照内容自动调整
+                height: 650,     // 信息窗口高度,设为0时将按照内容自动调整
+                enableMessage:true,//设置允许信息窗发送短息 
+                scrolling:"yes"          
+               };
+
+ 
+    for(var i=0;i<adds.length;i++){
+        var myIcon = new BMapGL.Icon("https://iconfont.alicdn.com/t/7b114c4c-1164-49d9-b0c8-340d249f4176.png", new BMapGL.Size(30, 30));// 创建新建标注图标
+        var pt = new BMapGL.Point(adds[i][0],adds[i][1]);// 创建Marker标注
+        var marker = new BMapGL.Marker(pt, {icon: myIcon}); //将Marker标注改成新图标 
+        var content = adds[i][2];
+        map.addOverlay(marker);               // 将标注添加到地图中
+        addClickHandler(content,marker);   
+    }
+    
+    //樱花标签：https://iconfont.alicdn.com/t/20dd64de-84a5-41a0-aeaa-659947d64c51.png
+    //中国结标签：https://iconfont.alicdn.com/t/39769f22-2beb-41fd-b3a4-48ca2f54560b.png
+    //花瓣：https://iconfont.alicdn.com/t/4f8447d4-df5b-4471-b82f-3a808b5143bb.png
+    //蛋花：https://iconfont.alicdn.com/t/4218c8ec-afc5-4305-8d83-09788f1d4d7f.png
+    //小红花：https://iconfont.alicdn.com/t/a465ab2a-db83-4da3-b861-07a882dd206a.png
+    // 桃花：https://iconfont.alicdn.com/t/7b114c4c-1164-49d9-b0c8-340d249f4176.png
+    // 小黄花：https://iconfont.alicdn.com/t/50b7b75c-b5e7-413a-b0cc-eead22ca1b0b.png
+    // 麻将：https://iconfont.alicdn.com/t/ffec5c10-f89b-4537-819c-94bcfcd218e3.png
+    // 红黄：https://iconfont.alicdn.com/t/c8bfc477-d7f6-42a4-92ac-677dd71b182c.png
+    function addClickHandler(content,marker){
+        marker.addEventListener("click",function(e){
+            openInfo(content,e)}
+        );
+    }
+    function openInfo(content,e){
+        var p = e.target;
+        var point = new BMapGL.Point(p.getPosition().lng, p.getPosition().lat);
+        var infoWindow = new BMapGL.InfoWindow(content,opts);  // 创建信息窗口对象
+        map.openInfoWindow(infoWindow,point); //开启信息窗口
+    }
+
+
+    // 地图个性化定制，需和ak密钥为同一个来源
+    map.setMapStyleV2({     
+    styleId: '99a601277ad9f86fea08e7255c0fa415'
+    });
+// 红黄：99a601277ad9f86fea08e7255c0fa415
+// 红白：928ae65ab70b9b971ced443e712ebda2
+// 黑绿红：4a290452a213c565a54fd547fcfe77a7
+
+
+</script>
